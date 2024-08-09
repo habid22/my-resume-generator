@@ -32,9 +32,9 @@ export const generateLatex = (data) => {
     return `
   %-------------------------
   % Resume in Latex
-  % Author : 
+  % Author : Jake Gutierrez
   % Based off of: https://github.com/sb2nov/resume
-  % License : 
+  % License : MIT
   %------------------------
   
   \\documentclass[letterpaper,11pt]{article}

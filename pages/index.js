@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { Container, Typography, Box, Button, TextareaAutosize } from '@mui/material';
 import ResumeForm from '../components/ResumeForm';
 
 export default function Home() {
-  const [pdfUrl, setPdfUrl] = useState('');
   const [latexCode, setLatexCode] = useState('');
 
   const handleFormSubmit = async (data) => {
@@ -14,21 +14,55 @@ export default function Home() {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    setPdfUrl(result.pdfUrl);
     setLatexCode(result.latexCode);
   };
 
+  const handleCopyLatexCode = () => {
+    navigator.clipboard.writeText(latexCode)
+      .then(() => {
+        alert('LaTeX code copied to clipboard!');
+      })
+      .catch(err => {
+        alert('Failed to copy text: ', err);
+      });
+  };
+
   return (
-    <div>
-      <h1>Resume Generator</h1>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
       <ResumeForm onSubmit={handleFormSubmit} />
-      {pdfUrl && <a href={pdfUrl} target="_blank" rel="noopener noreferrer">Download PDF</a>}
       {latexCode && (
-        <div>
-          <h2>LaTeX Code</h2>
-          <textarea rows="20" cols="80" readOnly value={latexCode} />
-        </div>
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h5" gutterBottom sx={{ color: 'text.secondary' }}>
+            LaTeX Code
+          </Typography>
+          <TextareaAutosize
+            minRows={4} // Set to a smaller number for a smaller initial height
+            maxRows={8} // Limit the maximum rows visible before scrolling
+            style={{
+              width: '100%',
+              backgroundColor: '#1a1625', // Matches the Mixed - 100 color
+              color: '#ffffff', // White text for contrast
+              border: '1px solid #2f2b3a', // Border matching the Mixed - 200 color
+              padding: '10px',
+              fontFamily: 'Roboto, monospace',
+              fontSize: '14px',
+              maxHeight: '200px', // Limit the height to 200px to enforce scrolling
+              overflow: 'auto', // Enable scrolling when content exceeds the max height
+              resize: 'vertical', // Allow the user to resize the text area vertically if needed
+            }}
+            value={latexCode}
+            readOnly
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleCopyLatexCode}
+            sx={{ mt: 2 }}
+          >
+            Copy LaTeX Code
+          </Button>
+        </Box>
       )}
-    </div>
+    </Container>
   );
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
+import { TextField, Button, Box, Typography, Grid } from '@mui/material';
+import { Add as AddIcon } from '@mui/icons-material';
 
 const ResumeForm = ({ onSubmit }) => {
   const { register, control, handleSubmit } = useForm();
@@ -17,95 +19,231 @@ const ResumeForm = ({ onSubmit }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Name:</label>
-        <input {...register('name')} />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input {...register('email')} />
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input {...register('phone')} />
-      </div>
-      <div>
-        <label>LinkedIn:</label>
-        <input {...register('linkedin')} />
-      </div>
-      <div>
-        <label>GitHub:</label>
-        <input {...register('github')} />
-      </div>
+    <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ p: 2, maxWidth: '800px', mx: 'auto' }}>
+      <Typography 
+        variant="h4" 
+        gutterBottom 
+        sx={{ 
+          color: 'text.secondary', 
+          fontWeight: 'bold', 
+          textAlign: 'center' 
+        }}
+      >
+        Software Engineering Resume Generator
+      </Typography>
 
-      <h3>Education</h3>
+      <TextField
+        label="Name"
+        {...register('name')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Email"
+        {...register('email')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Phone"
+        {...register('phone')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="LinkedIn"
+        {...register('linkedin')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="GitHub"
+        {...register('github')}
+        fullWidth
+        margin="normal"
+      />
+
+      <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
+        Education
+      </Typography>
       {educationFields.map((item, index) => (
-        <div key={item.id}>
-          <label>Institution:</label>
-          <input {...register(`education.${index}.institution`)} />
-          <label>Location:</label>
-          <input {...register(`education.${index}.location`)} />
-          <label>Degree:</label>
-          <input {...register(`education.${index}.degree`)} />
-          <label>Date:</label>
-          <input {...register(`education.${index}.date`)} />
-        </div>
+        <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Institution"
+              {...register(`education.${index}.institution`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Location"
+              {...register(`education.${index}.location`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Degree"
+              {...register(`education.${index}.degree`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Date"
+              {...register(`education.${index}.date`)}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
       ))}
-      <button type="button" onClick={() => appendEducation({})}>Add Education</button>
+      <Button
+        variant="outlined"
+        startIcon={<AddIcon />}
+        onClick={() => appendEducation({})}
+        sx={{ mb: 4 }}
+      >
+        Add Education
+      </Button>
 
-      <h3>Experience</h3>
+      <Typography variant="h5" gutterBottom>
+        Experience
+      </Typography>
       {experienceFields.map((item, index) => (
-        <div key={item.id}>
-          <label>Title:</label>
-          <input {...register(`experience.${index}.title`)} />
-          <label>Company:</label>
-          <input {...register(`experience.${index}.company`)} />
-          <label>Location:</label>
-          <input {...register(`experience.${index}.location`)} />
-          <label>Date:</label>
-          <input {...register(`experience.${index}.date`)} />
-          <label>Responsibilities:</label>
-          <textarea {...register(`experience.${index}.responsibilities`)} />
-        </div>
+        <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Title"
+              {...register(`experience.${index}.title`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Company"
+              {...register(`experience.${index}.company`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Location"
+              {...register(`experience.${index}.location`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Date"
+              {...register(`experience.${index}.date`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Responsibilities"
+              {...register(`experience.${index}.responsibilities`)}
+              multiline
+              rows={4}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
       ))}
-      <button type="button" onClick={() => appendExperience({})}>Add Experience</button>
+      <Button
+        variant="outlined"
+        startIcon={<AddIcon />}
+        onClick={() => appendExperience({})}
+        sx={{ mb: 4 }}
+      >
+        Add Experience
+      </Button>
 
-      <h3>Projects</h3>
+      <Typography variant="h5" gutterBottom>
+        Projects
+      </Typography>
       {projectsFields.map((item, index) => (
-        <div key={item.id}>
-          <label>Name:</label>
-          <input {...register(`projects.${index}.name`)} />
-          <label>Technologies:</label>
-          <input {...register(`projects.${index}.technologies`)} />
-          <label>Date:</label>
-          <input {...register(`projects.${index}.date`)} />
-          <label>Details:</label>
-          <textarea {...register(`projects.${index}.details`)} />
-        </div>
+        <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Name"
+              {...register(`projects.${index}.name`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Technologies"
+              {...register(`projects.${index}.technologies`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Date"
+              {...register(`projects.${index}.date`)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Details"
+              {...register(`projects.${index}.details`)}
+              multiline
+              rows={4}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
       ))}
-      <button type="button" onClick={() => appendProjects({})}>Add Project</button>
+      <Button
+        variant="outlined"
+        startIcon={<AddIcon />}
+        onClick={() => appendProjects({})}
+        sx={{ mb: 4 }}
+      >
+        Add Project
+      </Button>
 
-      <h3>Technical Skills</h3>
-      <div>
-        <label>Languages:</label>
-        <input {...register('skills.languages')} />
-      </div>
-      <div>
-        <label>Frameworks:</label>
-        <input {...register('skills.frameworks')} />
-      </div>
-      <div>
-        <label>Developer Tools:</label>
-        <input {...register('skills.tools')} />
-      </div>
-      <div>
-        <label>Libraries:</label>
-        <input {...register('skills.libraries')} />
-      </div>
+      <Typography variant="h5" gutterBottom>
+        Technical Skills
+      </Typography>
+      <TextField
+        label="Languages"
+        {...register('skills.languages')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Frameworks"
+        {...register('skills.frameworks')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Developer Tools"
+        {...register('skills.tools')}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        label="Libraries"
+        {...register('skills.libraries')}
+        fullWidth
+        margin="normal"
+      />
 
-      <button type="submit">Generate Resume</button>
-    </form>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        fullWidth
+        sx={{ mt: 4 }}
+      >
+        Generate Resume
+      </Button>
+    </Box>
   );
 };
 

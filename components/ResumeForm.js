@@ -75,7 +75,10 @@ const ResumeForm = ({ onSubmit }) => {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ p: 2, maxWidth: '800px', mx: 'auto' }}>
       <Typography variant="h4" gutterBottom sx={{ color: 'text.secondary', fontWeight: 'bold', textAlign: 'center' }}>
-        coderesume.
+        coderesume
+      </Typography>
+      <Typography variant="body1" gutterBottom sx={{ color: 'text.secondary', textAlign: 'center', mb: 4 }}>
+        a basic tool that generates latex code based on jakes resume template for cs and software students. ^‿^
       </Typography>
 
       <TextField
@@ -97,7 +100,7 @@ const ResumeForm = ({ onSubmit }) => {
         margin="normal"
       />
       <TextField
-        label="linkedIn"
+        label="linkedin"
         {...register('linkedin')}
         fullWidth
         margin="normal"
@@ -160,7 +163,7 @@ const ResumeForm = ({ onSubmit }) => {
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Title"
+              label="title"
               {...register(`experience.${index}.title`)}
               fullWidth
             />

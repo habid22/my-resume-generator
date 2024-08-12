@@ -69,9 +69,9 @@ export default function MyApp({ Component, pageProps }) {
       <CssBaseline />
       <AppBar position="static" color="transparent" elevation={0} sx={{ mb: 4 }}>
         <Toolbar>
-          <ResumeIcon sx={{ mr: 0.5, color: theme.palette.text.primary }} />
-          <Typography variant="h6" color="text.primary">
-          coderesume.
+          <ResumeIcon sx={{ mr: 0.5, color: theme.palette.text.primary,}} />
+          <Typography variant="h6" color="text.primary" sx={{ fontWeight: 'bold' }}>
+          coderesume
           </Typography>
         </Toolbar>
       </AppBar>

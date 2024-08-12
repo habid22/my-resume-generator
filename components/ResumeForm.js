@@ -2,11 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
-import sound1 from '../sounds/sound1.mp3';
-import sound2 from '../sounds/sound2.mp3';
+import keyboard1 from '../sounds/keyboard1.mp3';
+import keyboard2 from '../sounds/keyboard2.mp3';
+import keyboard3 from '../sounds/keyboard3.mp3';
+import keyboard4 from '../sounds/keyboard4.mp3';
+import keyboard5 from '../sounds/keyboard5.mp3';
 
 const ResumeForm = ({ onSubmit }) => {
-  const { register, control, handleSubmit } = useForm();
+  const { register, control, handleSubmit, watch } = useForm();
   const { fields: educationFields, append: appendEducation } = useFieldArray({
     control,
     name: "education",
@@ -23,32 +26,51 @@ const ResumeForm = ({ onSubmit }) => {
   // Refs to hold the sound effects
   const soundEffect1 = useRef(null);
   const soundEffect2 = useRef(null);
+  const soundEffect3 = useRef(null);
+  const soundEffect4 = useRef(null);
+  const soundEffect5 = useRef(null);
 
   useEffect(() => {
     // Initialize the Audio objects only on the client-side
-    soundEffect1.current = new Audio(sound1);
-    soundEffect2.current = new Audio(sound2);
+    soundEffect1.current = new Audio(keyboard1);
+    soundEffect2.current = new Audio(keyboard2);
+    soundEffect3.current = new Audio(keyboard3);
+    soundEffect4.current = new Audio(keyboard4);
+    soundEffect5.current = new Audio(keyboard5);
 
     // Function to play a random sound effect
     const playRandomSound = () => {
-      const sounds = [soundEffect1.current, soundEffect2.current];
+      const sounds = [soundEffect1.current, soundEffect2.current, soundEffect3.current, soundEffect4.current, soundEffect5.current];
       const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
       randomSound.play();
     };
 
-    // Add event listeners to all input fields
-    const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach((input) => {
-      input.addEventListener('input', playRandomSound);
+    // Function to attach event listeners to input fields
+    const attachEventListeners = () => {
+      const inputs = document.querySelectorAll('input, textarea');
+      inputs.forEach((input) => {
+        input.removeEventListener('input', playRandomSound); // Remove any existing listeners to avoid duplicates
+        input.addEventListener('input', playRandomSound);
+      });
+    };
+
+    // Attach event listeners initially
+    attachEventListeners();
+
+    // Watch for changes in the fields to reattach event listeners
+    const subscription = watch(() => {
+      attachEventListeners();
     });
 
     // Clean up event listeners on component unmount
     return () => {
+      const inputs = document.querySelectorAll('input, textarea');
       inputs.forEach((input) => {
         input.removeEventListener('input', playRandomSound);
       });
+      subscription.unsubscribe(); // Unsubscribe from watching field changes
     };
-  }, []);
+  }, [watch]);
 
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ p: 2, maxWidth: '800px', mx: 'auto' }}>
@@ -57,65 +79,65 @@ const ResumeForm = ({ onSubmit }) => {
       </Typography>
 
       <TextField
-        label="Name"
+        label="name"
         {...register('name')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Email"
+        label="email"
         {...register('email')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Phone"
+        label="phone"
         {...register('phone')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="LinkedIn"
+        label="linkedIn"
         {...register('linkedin')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="GitHub"
+        label="github"
         {...register('github')}
         fullWidth
         margin="normal"
       />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
-        Education
+        education
       </Typography>
       {educationFields.map((item, index) => (
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Institution"
+              label="institution"
               {...register(`education.${index}.institution`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Location"
+              label="location"
               {...register(`education.${index}.location`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Degree"
+              label="degree"
               {...register(`education.${index}.degree`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Date"
+              label="date"
               {...register(`education.${index}.date`)}
               fullWidth
             />
@@ -132,7 +154,7 @@ const ResumeForm = ({ onSubmit }) => {
       </Button>
 
       <Typography variant="h5" gutterBottom>
-        Experience
+        experience
       </Typography>
       {experienceFields.map((item, index) => (
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
@@ -145,28 +167,28 @@ const ResumeForm = ({ onSubmit }) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Company"
+              label="company"
               {...register(`experience.${index}.company`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Location"
+              label="location"
               {...register(`experience.${index}.location`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Date"
+              label="date"
               {...register(`experience.${index}.date`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Responsibilities"
+              label="responsibilities"
               {...register(`experience.${index}.responsibilities`)}
               multiline
               rows={4}
@@ -185,34 +207,34 @@ const ResumeForm = ({ onSubmit }) => {
       </Button>
 
       <Typography variant="h5" gutterBottom>
-        Projects
+        projects
       </Typography>
       {projectsFields.map((item, index) => (
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Name"
+              label="name"
               {...register(`projects.${index}.name`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Technologies"
+              label="technologies"
               {...register(`projects.${index}.technologies`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Date"
+              label="date"
               {...register(`projects.${index}.date`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Details"
+              label="details"
               {...register(`projects.${index}.details`)}
               multiline
               rows={4}
@@ -231,28 +253,28 @@ const ResumeForm = ({ onSubmit }) => {
       </Button>
 
       <Typography variant="h5" gutterBottom>
-        Technical Skills
+        technical skills
       </Typography>
       <TextField
-        label="Languages"
+        label="languages"
         {...register('skills.languages')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Frameworks"
+        label="frameworks"
         {...register('skills.frameworks')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Developer Tools"
+        label="developer tools"
         {...register('skills.tools')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Libraries"
+        label="libraries"
         {...register('skills.libraries')}
         fullWidth
         margin="normal"

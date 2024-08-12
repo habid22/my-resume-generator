@@ -31,9 +31,9 @@ export default function Home() {
     <Container maxWidth="md" sx={{ mt: 4 }}>
       <ResumeForm onSubmit={handleFormSubmit} />
       {latexCode && (
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 4, position: 'relative' }}>
           <Typography variant="h5" gutterBottom sx={{ color: 'text.primary' }}>
-            latex code
+            LaTeX Code
           </Typography>
           <TextareaAutosize
             minRows={4} // Set to a smaller number for a smaller initial height
@@ -57,7 +57,15 @@ export default function Home() {
             variant="contained"
             color="primary"
             onClick={handleCopyLatexCode}
-            sx={{ mt: 2 }}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              transform: 'translate(0%, -50%)', 
+              mt: 2,
+              boxShadow: 'none', // Remove the shadow
+              border: '1px solid #85a5bb', // Add the border color
+            }}
           >
             Copy LaTeX Code
           </Button>

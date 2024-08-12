@@ -29,69 +29,69 @@ const ResumeForm = ({ onSubmit }) => {
           textAlign: 'center' 
         }}
       >
-        Software Engineering Resume Generator
+        coderesume.
       </Typography>
 
       <TextField
-        label="Name"
+        label="name"
         {...register('name')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Email"
+        label="email"
         {...register('email')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Phone"
+        label="phone"
         {...register('phone')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="LinkedIn"
+        label="linkedIn"
         {...register('linkedin')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="GitHub"
+        label="github"
         {...register('github')}
         fullWidth
         margin="normal"
       />
 
       <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
-        Education
+        education
       </Typography>
       {educationFields.map((item, index) => (
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Institution"
+              label="institution"
               {...register(`education.${index}.institution`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Location"
+              label="location"
               {...register(`education.${index}.location`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Degree"
+              label="degree"
               {...register(`education.${index}.degree`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Date"
+              label="date"
               {...register(`education.${index}.date`)}
               fullWidth
             />
@@ -104,11 +104,11 @@ const ResumeForm = ({ onSubmit }) => {
         onClick={() => appendEducation({})}
         sx={{ mb: 4 }}
       >
-        Add Education
+        add education
       </Button>
 
       <Typography variant="h5" gutterBottom>
-        Experience
+        experience
       </Typography>
       {experienceFields.map((item, index) => (
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
@@ -121,28 +121,28 @@ const ResumeForm = ({ onSubmit }) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Company"
+              label="company"
               {...register(`experience.${index}.company`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Location"
+              label="location"
               {...register(`experience.${index}.location`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Date"
+              label="date"
               {...register(`experience.${index}.date`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Responsibilities"
+              label="responsibilities"
               {...register(`experience.${index}.responsibilities`)}
               multiline
               rows={4}
@@ -157,38 +157,38 @@ const ResumeForm = ({ onSubmit }) => {
         onClick={() => appendExperience({})}
         sx={{ mb: 4 }}
       >
-        Add Experience
+        add experience
       </Button>
 
       <Typography variant="h5" gutterBottom>
-        Projects
+        projects
       </Typography>
       {projectsFields.map((item, index) => (
         <Grid container spacing={2} key={item.id} sx={{ mb: 2 }}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Name"
+              label="name"
               {...register(`projects.${index}.name`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Technologies"
+              label="technologies"
               {...register(`projects.${index}.technologies`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Date"
+              label="date"
               {...register(`projects.${index}.date`)}
               fullWidth
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Details"
+              label="details"
               {...register(`projects.${index}.details`)}
               multiline
               rows={4}
@@ -203,32 +203,32 @@ const ResumeForm = ({ onSubmit }) => {
         onClick={() => appendProjects({})}
         sx={{ mb: 4 }}
       >
-        Add Project
+        add project
       </Button>
 
       <Typography variant="h5" gutterBottom>
-        Technical Skills
+        technical skills
       </Typography>
       <TextField
-        label="Languages"
+        label="languages"
         {...register('skills.languages')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Frameworks"
+        label="frameworks"
         {...register('skills.frameworks')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Developer Tools"
+        label="developer tools"
         {...register('skills.tools')}
         fullWidth
         margin="normal"
       />
       <TextField
-        label="Libraries"
+        label="libraries"
         {...register('skills.libraries')}
         fullWidth
         margin="normal"
@@ -241,7 +241,7 @@ const ResumeForm = ({ onSubmit }) => {
         fullWidth
         sx={{ mt: 4 }}
       >
-        Generate Resume
+        generate resume
       </Button>
     </Box>
   );

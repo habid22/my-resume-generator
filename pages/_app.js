@@ -1,45 +1,36 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import '@fontsource/roboto/400.css';  // Import Roboto font
+import '@fontsource/roboto-mono/400.css';  // Import Roboto Mono font
 
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Roboto Mono, monospace',  // Set Roboto Mono as the default font
+  },
   palette: {
     primary: {
-      main: '#404258', // Dark Slate from previous palette
+      main: '#85a5bb', // Use the secondary color as the primary theme color
     },
     secondary: {
-      main: '#50577A', // Slate Blue from previous palette
+      main: '#85a5bb', // Same as primary for consistency
     },
     background: {
-      default: '#1a1625', // Mixed - 100
-      paper: '#2f2b3a', // Mixed - 200
+      default: '#b0ccdc', // Set the background color
+      paper: '#ffffff', // Use white for cards and other paper elements for contrast
     },
     text: {
-      primary: '#ffffff', // White for contrast
-      secondary: '#B0BEC5', // Light grey for secondary text
-    },
-  },
-  typography: {
-    fontFamily: 'Roboto, sans-serif',
-    h4: {
-      color: '#ffffff', // White for titles
-    },
-    h5: {
-      color: '#B0BEC5', // Light grey for subtitles
-    },
-    body1: {
-      color: '#B0BEC5', // Light grey for body text
+      primary: '#85a5bb', // A dark color for text to ensure good contrast
+      secondary: '#85a5bb', // Slightly lighter color for secondary text
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '8px', // Rounded corners
-          backgroundColor: '#404258', // Use the primary color for buttons
-          color: '#ffffff', // White text for buttons
+          borderRadius: '8px',
+          backgroundColor: '#afcadc',
+          color: '#85a5bb',
           '&:hover': {
-            backgroundColor: '#50577A', // Darker slate for hover
+            backgroundColor: '#afcadc', // Darken slightly on hover
           },
         },
       },
@@ -48,20 +39,20 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& label.Mui-focused': {
-            color: '#50577A', // Focused label color
+            color: '#85a5bb', // Use the secondary color for focused labels
           },
           '& .MuiInput-underline:after': {
-            borderBottomColor: '#50577A', // Focused underline color
+            borderBottomColor: '#85a5bb', // Use the secondary color for underline after focus
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: '#50577A', // Default border color
+              borderColor: '#85a5bb', // Default border color
             },
             '&:hover fieldset': {
-              borderColor: '#404258', // Hover border color
+              borderColor: '#748ca1', // Darken slightly on hover
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#50577A', // Focused border color
+              borderColor: '#85a5bb', // Focused border color
             },
           },
         },

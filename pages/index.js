@@ -32,19 +32,19 @@ export default function Home() {
       <ResumeForm onSubmit={handleFormSubmit} />
       {latexCode && (
         <Box sx={{ mt: 4 }}>
-          <Typography variant="h5" gutterBottom sx={{ color: 'text.secondary' }}>
-            LaTeX Code
+          <Typography variant="h5" gutterBottom sx={{ color: 'text.primary' }}>
+            latex code
           </Typography>
           <TextareaAutosize
             minRows={4} // Set to a smaller number for a smaller initial height
             maxRows={8} // Limit the maximum rows visible before scrolling
             style={{
               width: '100%',
-              backgroundColor: '#1a1625', // Matches the Mixed - 100 color
-              color: '#ffffff', // White text for contrast
-              border: '1px solid #2f2b3a', // Border matching the Mixed - 200 color
+              backgroundColor: '#b0ccdc', // Background color
+              color: '#8094ac', // Text color
+              border: '1px solid #8094ac', // Border color
               padding: '10px',
-              fontFamily: 'Roboto, monospace',
+              fontFamily: 'Roboto Mono, monospace',
               fontSize: '14px',
               maxHeight: '200px', // Limit the height to 200px to enforce scrolling
               overflow: 'auto', // Enable scrolling when content exceeds the max height

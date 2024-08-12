@@ -1,3 +1,5 @@
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import { Description as ResumeIcon } from '@mui/icons-material'; // Import the resume-like icon
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import '@fontsource/roboto-mono/400.css';  // Import Roboto Mono font
@@ -18,8 +20,8 @@ const theme = createTheme({
       paper: '#ffffff', // Use white for cards and other paper elements for contrast
     },
     text: {
-      primary: '#85a5bb', // A dark color for text to ensure good contrast
-      secondary: '#85a5bb', // Slightly lighter color for secondary text
+      primary: '#85a5bb', // Primary color for text
+      secondary: '#85a5bb', // Secondary color for text
     },
   },
   components: {
@@ -30,7 +32,7 @@ const theme = createTheme({
           backgroundColor: '#afcadc',
           color: '#85a5bb',
           '&:hover': {
-            backgroundColor: '#afcadc', // Darken slightly on hover
+            backgroundColor: '#afcadc', // Maintain same color on hover
           },
         },
       },
@@ -65,6 +67,14 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <AppBar position="static" color="transparent" elevation={0} sx={{ mb: 4 }}>
+        <Toolbar>
+          <ResumeIcon sx={{ mr: 0.5, color: theme.palette.text.primary }} />
+          <Typography variant="h6" color="text.primary">
+          coderesume.
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Component {...pageProps} />
     </ThemeProvider>
   );

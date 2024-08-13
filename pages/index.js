@@ -33,7 +33,7 @@ export default function Home() {
       {latexCode && (
         <Box sx={{ mt: 4, position: 'relative' }}>
           <Typography variant="h5" gutterBottom sx={{ color: 'text.primary' }}>
-            LaTeX Code
+            latex code
           </Typography>
           <TextareaAutosize
             minRows={4} // Set to a smaller number for a smaller initial height

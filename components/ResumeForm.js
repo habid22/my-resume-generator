@@ -314,15 +314,23 @@ const ResumeForm = ({ onSubmit }) => {
         margin="normal"
       />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        fullWidth
-        sx={{ mt: 4 }}
-      >
-        Generate Resume
-      </Button>
+    <Button
+      type="submit"
+      variant="contained"
+      color="primary"
+      fullWidth
+      sx={{ 
+        mt: 4, 
+        border: '1px solid #85a5bb', // Adding the border to the button
+        boxShadow: 'none', // Ensure there's no shadow if you want a flat look
+        padding: '6px 12px', // Adjust the padding to make the button smaller
+        fontSize: '0.875rem', // Reduce the font size
+        height: '36px', // Optional: Set a specific height if needed
+      }}
+    >
+      Generate Resume
+    </Button>
+
     </Box>
   );
 };

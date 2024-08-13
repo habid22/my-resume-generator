@@ -2,6 +2,7 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Description as ResumeIcon } from '@mui/icons-material'; // Import the resume-like icon
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import Head from 'next/head'; // Import Head for including the favicon and other meta tags
 import '@fontsource/roboto-mono/400.css';  // Import Roboto Mono font
 
 const theme = createTheme({
@@ -34,6 +35,8 @@ const theme = createTheme({
           '&:hover': {
             backgroundColor: '#afcadc', // Maintain same color on hover
           },
+          borderColor: '#85a5bb', // Adding border color for buttons
+          boxShadow: 'none', // Removing button shadow
         },
       },
     },
@@ -67,11 +70,18 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <title>coderesume</title>
+      </Head>
       <AppBar position="static" color="transparent" elevation={0} sx={{ mb: 4 }}>
         <Toolbar>
-          <ResumeIcon sx={{ mr: 0.5, color: theme.palette.text.primary,}} />
+          <ResumeIcon sx={{ mr: 0.5, color: theme.palette.text.primary }} />
           <Typography variant="h6" color="text.primary" sx={{ fontWeight: 'bold' }}>
-          coderesume
+            coderesume
           </Typography>
         </Toolbar>
       </AppBar>

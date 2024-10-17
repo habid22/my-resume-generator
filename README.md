@@ -16,7 +16,7 @@ You can visit the live website here: [coderesume.](https://coderesume-alpha-test
 
 ## Technologies
 
-CodeResume is built with modern web development technologies:
+coderesume. is built with modern web development technologies:
 - **JavaScript**: Dynamic client-side logic and form handling.
 - **Node.js**: Server-side processing and LaTeX generation logic.
 - **Python**: Utilized for additional processing tasks and backend operations.

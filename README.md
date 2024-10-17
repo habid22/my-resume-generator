@@ -1,10 +1,10 @@
-# CodeResume
+# coderesume.
 
-**CodeResume** is a web-based tool that allows Computer Science and Software Engineering students to quickly generate LaTeX code for professional resumes based on answers provided in fields. This simplifies the process of creating a clean and structured resume, eliminating the need for manual LaTeX formatting and helping users focus on their content.
+**coderesume.** is a web-based tool that allows Computer Science and Software Engineering students to quickly generate LaTeX code for professional resumes based on answers provided in fields. This simplifies the process of creating a clean and structured resume, eliminating the need for manual LaTeX formatting and helping users focus on their content.
 
 ## Website
 
-You can visit the live website here: [CodeResume](https://coderesume-alpha-testing.vercel.app/)
+You can visit the live website here: [coderesume.](https://coderesume-alpha-testing.vercel.app/)
 
 ## Features
 
